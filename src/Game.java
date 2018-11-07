@@ -161,24 +161,31 @@ public class Game
         }
         else {
             currentRoom = nextRoom;
-            System.out.println("Você está " + currentRoom.getDescription());
-            System.out.print("Saídas: ");
-            if(currentRoom.northExit != null) {
-                System.out.print("norte ");
-            }
-            if(currentRoom.eastExit != null) {
-                System.out.print("leste ");
-            }
-            if(currentRoom.southExit != null) {
-                System.out.print("sul ");
-            }
-            if(currentRoom.westExit != null) {
-                System.out.print("oeste ");
-            }
-            System.out.println();
+            printLocationInfo();
         }
     }
-
+    
+    private void printLocationInfo(){
+    	  System.out.println("Você está " + currentRoom.getDescription());
+          System.out.print("Saídas: ");
+          if(currentRoom.northExit != null) {
+              System.out.print("norte ");
+          }
+          if(currentRoom.eastExit != null) {
+              System.out.print("leste ");
+          }
+          if(currentRoom.southExit != null) {
+              System.out.print("sul ");
+          }
+          if(currentRoom.westExit != null) {
+              System.out.print("oeste ");
+          }
+          System.out.println();
+    }
+    
+    
+    
+    
     /** 
      * "Sair" foi digitado. Verifica o resto do comando para saber
      * se o usuário quer realmente sair do jogo.

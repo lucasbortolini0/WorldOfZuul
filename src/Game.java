@@ -78,6 +78,13 @@ public class Game
         printLocationInfo();
     }
     
+    private void look(Command command) {
+    	System.out.println(currentRoom.getLongDescription());
+    }
+    private void comer(Command command) {
+    	System.out.println("Voce não esta mais com fome");
+    }
+    
     /**
      * Imptimr informações relativas à
      * Localização atual.
@@ -107,7 +114,10 @@ public class Game
             goRoom(command);
         else if (commandWord.equals("sair"))
             wantToQuit = quit(command);
-
+        else if(commandWord.equals("examinar")) 
+        	look(command);
+        else if(commandWord.equals("comer"))
+        	comer(command);
         return wantToQuit;
     }
 
@@ -124,7 +134,7 @@ public class Game
         System.out.println("pela universidade.");
         System.out.println();
         System.out.println("Seus comandos são:");
-        System.out.println("   ir_para sair ajuda");
+        parser.showCommands();
     }
 
     /** 

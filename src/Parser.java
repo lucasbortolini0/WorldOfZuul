@@ -18,6 +18,8 @@ public class Parser
         commands = new CommandWords();
         reader = new Scanner(System.in);
     }
+    
+  
 
     /**
      * @return O próximo comando do usuário.
@@ -52,4 +54,8 @@ public class Parser
             return new Command(null, word2); 
         }
     }
+     public void showCommands() {
+    	 commands.showAll();
+     }
+    
 }

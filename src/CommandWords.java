@@ -7,7 +7,7 @@ public class CommandWords
 {
     // um array constante que contém todos os comandos válidos
     private static final String[] VALID_COMMANDS = {
-        "ir_para", "sair", "ajuda"
+        "ir_para", "sair", "ajuda","examinar","comer"
     };
 
     /**
@@ -17,6 +17,15 @@ public class CommandWords
     {
         // nada a fazer no momento...
     }
+    /**
+     *imprimir todos os comandos validos*/
+    
+     public void showAll() {
+    	 for(String command: VALID_COMMANDS) {
+    	System.out.println(command + "");
+    	 }
+    	 System.out.println();
+     }
 
     /**
      * Checa se uma string é uma palavra válida. 

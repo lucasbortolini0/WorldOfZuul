@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 /**
  * Class Room - a room in an adventure game.
  *
@@ -15,10 +17,7 @@
 public class Room 
 {
     private String description;
-    private Room northExit;
-    private Room southExit;
-    private Room eastExit;
-    private Room westExit;
+    private HashMap<String, Room> exits;
 
     /**
      * Create a room described "description". Initially, it has
@@ -29,6 +28,7 @@ public class Room
     public Room(String description) 
     {
         this.description = description;
+        exits = new HashMap<>();
     }
 
     /**
@@ -39,16 +39,9 @@ public class Room
      * @param south The south exit.
      * @param west The west exit.
      */
-    public void setExits(Room north, Room east, Room south, Room west) 
+    public void setExits(String direction, Room exit) 
     {
-        if(north != null)
-            northExit = north;
-        if(east != null)
-            eastExit = east;
-        if(south != null)
-            southExit = south;
-        if(west != null)
-            westExit = west;
+        exits.put(direction, exit);
     }
     
     /**
@@ -56,24 +49,24 @@ public class Room
      * @return A saída adequada
      */
     public Room getExit(String direction)
+    {	
+    	return exits.get(direction);
+    }
+    
+    /**
+     * Retorna uma descrição das saídas da sala,
+     * por exemplo, "Saídas: norte oeste".
+     * @return Uma descrição das saídas disponíveis
+     */
+    public String getExitString() 
     {
-    	if (direction.equals("norte")) {
-    		return northExit;
+    	String returnString = "Saídas: ";
+        
+    	for (String exit : exits.keySet()) {
+    		returnString += exit + " ";
     	}
-    	
-    	if (direction.equals("sul")) {
-    		return southExit;
-    	}
-    	
-    	if (direction.equals("leste")) {
-    		return eastExit;
-    	}
-    	
-    	if (direction.equals("oeste")) {
-    		return westExit;
-    	}
-    	
-    	return null;
+        
+        return returnString;
     }
 
     /**
@@ -82,6 +75,18 @@ public class Room
     public String getDescription()
     {
         return description;
+    }
+    
+    /**
+     * Retorna uma descrição longa desta sala, na forma:
+     *   Você está na cozinha.
+     *   Saídas: norte oeste
+     * @return Uma descrição da sala, incluindo saídas.
+     */
+    public String getLongDescription()
+    {
+    	return "Você está " + description + ".\n" +
+    			getExitString();
     }
 
 }

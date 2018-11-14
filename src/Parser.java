@@ -1,13 +1,13 @@
 import java.util.Scanner;
 
 /**
- * Esta classe √© parte da aplica√ß√£o "Mundo de Zuul". 
+ * Esta classe È parte da aplicaÁ„o "Mundo de Zuul". 
  * 
  */
 
 public class Parser 
 {
-    private CommandWords commands;  // cont√©m os comandos v√°lidos
+    private CommandWords commands;  // contÈm os comandos v·lidos
     private Scanner reader;         // origem da entrada de comandos
 
     /**
@@ -20,7 +20,7 @@ public class Parser
     }
 
     /**
-     * @return O pr√≥ximo comando do usu√°rio.
+     * @return O prÛximo comando do usu·rio.
      */
     public Command getCommand() 
     {
@@ -32,7 +32,7 @@ public class Parser
 
         inputLine = reader.nextLine();
 
-        // Encontra at√© duas palavras na linha.
+        // Encontra atÈ duas palavras na linha.
         Scanner tokenizer = new Scanner(inputLine);
         if(tokenizer.hasNext()) {
             word1 = tokenizer.next();      // pega a primeira palavra
@@ -42,8 +42,8 @@ public class Parser
             }
         }
 
-        // Agora checa se esta palavra √© conhecida. Caso positivo, cria um
-        // comando com ela. Se n√£o, cria um comando "null" 
+        // Agora checa se esta palavra È conhecida. Caso positivo, cria um
+        // comando com ela. Se n„o, cria um comando "null" 
         // (para comando desconhecido).
         if(commands.isCommand(word1)) {
             return new Command(word1, word2);

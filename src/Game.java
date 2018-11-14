@@ -22,7 +22,7 @@ public class Game
      */
     private void createRooms()
     {
-        Room outside, theatre, pub, lab, office;
+        Room outside, theatre, pub, lab, office, attic;
       
         // create the rooms
         outside = new Room("fora da entrada principal da universidade");
@@ -30,13 +30,19 @@ public class Game
         pub = new Room("na cantina do campus");
         lab = new Room("em um laboratório de informática");
         office = new Room("na sala dos professores");
+        attic = new Room("no sótão da laboratório");
         
         // initialise room exits
-        outside.setExits(null, theatre, lab, pub);
-        theatre.setExits(null, null, null, outside);
-        pub.setExits(null, outside, null, null);
-        lab.setExits(outside, office, null, null);
-        office.setExits(null, null, null, lab);
+        outside.setExits("leste", theatre);
+        outside.setExits("sul", lab);
+        outside.setExits("oeste", pub);
+        theatre.setExits("oeste", outside);
+        pub.setExits("leste", outside);
+        lab.setExits("norte", outside);
+        lab.setExits("leste", office);
+        lab.setExits("cima", attic);
+        attic.setExits("baixo", lab);
+        office.setExits("oeste", lab);
 
         currentRoom = outside;  // Começa o jogo fora 
     }
@@ -77,21 +83,7 @@ public class Game
      * Localização atual.
      */
     private void printLocationInfo() {
-    	System.out.println("Você está " + currentRoom.getDescription());
-        System.out.print("Saídas: ");
-        if(currentRoom.northExit != null) {
-            System.out.print("norte ");
-        }
-        if(currentRoom.eastExit != null) {
-            System.out.print("leste ");
-        }
-        if(currentRoom.southExit != null) {
-            System.out.print("sul ");
-        }
-        if(currentRoom.westExit != null) {
-            System.out.print("oeste ");
-        }
-        System.out.println();
+        System.out.println(currentRoom.getLongDescription());
     }
 
     /**

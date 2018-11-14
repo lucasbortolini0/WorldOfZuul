@@ -1,11 +1,11 @@
 /**
- * Esta classe √© parte da aplica√ß√£o "Mundo de Zuul". 
+ * Esta classe È parte da aplicaÁ„o "Mundo de Zuul". 
  * 
  */
 
 public class CommandWords
 {
-    // um array constante que cont√©m todos os comandos v√°lidos
+    // um array constante que contÈm todos os comandos v·lidos
     private static final String[] VALID_COMMANDS = {
         "ir_para", "sair", "ajuda"
     };
@@ -19,9 +19,9 @@ public class CommandWords
     }
 
     /**
-     * Checa se uma string √© uma palavra v√°lida. 
+     * Checa se uma string È uma palavra v·lida. 
      * @param aString uma string 
-     * @return true se a string √© um comando v√°lido, falso se n√£o
+     * @return true se a string È um comando v·lido, falso se n„o
      */
     public boolean isCommand(String aString)
     {
@@ -30,7 +30,7 @@ public class CommandWords
                 return true;
             }
         }
-        // se chegamos aqui, a string n√£o foi encontrada nos comandos
+        // se chegamos aqui, a string n„o foi encontrada nos comandos
         return false;
     }
 }
